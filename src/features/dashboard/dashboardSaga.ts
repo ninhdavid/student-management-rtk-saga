@@ -12,7 +12,7 @@ function* fetchStatistics() {
         call(studentApi.getAll, { _page: 1, _limit: 1, mark_lte: 5 }),
     ]);
 
-    const statisticList = responseList.map((x) => x.pagination._totalRow);
+    const statisticList = responseList.map((x) => x.pagination._totalRows);
     const [maleCount, femaleCount, highMarkCount, lowMarkCount] = statisticList;
     yield put(
         dashboardActions.setStatistics({ maleCount, femaleCount, highMarkCount, lowMarkCount })
@@ -35,7 +35,7 @@ function* fetchLowestStudentList() {
         _sort: 'mark',
         _order: 'asc',
     });
-    yield put(dashboardActions.setHighestStudentList(data));
+    yield put(dashboardActions.setLowestStudentList(data));
 }
 function* fetchRankingByCityList() {
     //fetch city list

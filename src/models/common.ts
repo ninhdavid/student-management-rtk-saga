@@ -1,7 +1,7 @@
 export interface PaginationParams {
     _limit: number;
     _page: number;
-    _totalRow: number;
+    _totalRows: number;
 }
 
 export interface ListResponse<T> {

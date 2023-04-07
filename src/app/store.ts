@@ -6,6 +6,8 @@ import counterReducer from '../features/counter/counterSlice';
 import rootSaga from './rootSaga';
 import { createReduxHistoryContext } from 'redux-first-history';
 import dashboardReducer from 'features/dashboard/dashboardSlice';
+import studentReducer from 'features/student/studentSlice';
+import cityReducer from 'features/city/citySlice';
 
 const { createReduxHistory, routerMiddleware, routerReducer } = createReduxHistoryContext({
     history: createBrowserHistory(),
@@ -16,6 +18,8 @@ const rootReducer = combineReducers({
     counter: counterReducer,
     auth: authReducer,
     dashboard: dashboardReducer,
+    student: studentReducer,
+    city: cityReducer,
 });
 
 const sagaMiddleware = createSagaMiddleware();

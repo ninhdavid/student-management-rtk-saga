@@ -13,7 +13,6 @@ export interface StudentRankingListProps {
 
 export default function StudentRankingList({ studentList }: StudentRankingListProps) {
     const { classes } = useStyles();
-
     return (
         <TableContainer>
             <Table className={classes.table} size="small" aria-label="simple table">
