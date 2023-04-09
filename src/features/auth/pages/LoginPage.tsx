@@ -4,6 +4,7 @@ import { useAppDispatch, useAppSelector } from 'app/hooks';
 import * as React from 'react';
 import { makeStyles } from 'tss-react/mui';
 import { authActions } from '../authSlice';
+import { Outlet, Navigate } from 'react-router-dom';
 
 export interface LoginPageProps {}
 
@@ -34,6 +35,12 @@ export default function LoginPage(props: LoginPageProps) {
             })
         );
     };
+    const access_token = Boolean(localStorage.getItem('access_token'));
+    if (access_token) {
+        return <Navigate to="/admin " />;
+    } else if (!access_token) {
+        <Navigate to="/login" replace />;
+    }
     return (
         <div className={classes.root}>
             <Paper elevation={1} className={classes.box}>
@@ -52,6 +59,7 @@ export default function LoginPage(props: LoginPageProps) {
                     </Button>
                 </Box>
             </Paper>
+            <Outlet />
         </div>
     );
 }

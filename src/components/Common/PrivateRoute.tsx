@@ -7,6 +7,7 @@ export function PrivateRoute(props: RouteProps) {
     if (!isLoggedIn) {
         return <Navigate to="/login" replace={true} />;
     }
+
     return (
         <Routes>
             <Route {...props} />

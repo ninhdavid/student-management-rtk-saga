@@ -7,6 +7,8 @@ import { HistoryRouter as Router } from 'redux-first-history/rr6';
 import App from './App';
 import { store, history } from './app/store';
 import './index.css';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.min.css';
 import reportWebVitals from './reportWebVitals';
 
 const container = document.getElementById('root')!;
@@ -17,10 +19,20 @@ root.render(
         <Provider store={store}>
             <Router history={history}>
                 {/* <Router location={history.location} navigator={history}> */}
-                <CssBaseline>
-                    <App />
-                </CssBaseline>
+                <CssBaseline />
+                <App />
             </Router>
+            <ToastContainer
+                position="top-right"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+            />
         </Provider>
     </React.StrictMode>
 );

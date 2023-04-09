@@ -43,7 +43,7 @@ export default function StudentFilters({
     };
 
     // const handleCityChange = (e: React.ChangeEvent<{ name?: string; value: unknown }>) => {
-    const handleCityChange = (e: SelectChangeEvent) => {
+    const handleCityChange = (e: SelectChangeEvent<string>) => {
         if (!onChange) return;
 
         const newFilter: ListParams = {
@@ -55,7 +55,7 @@ export default function StudentFilters({
     };
 
     // const handleSortChange = (e: React.ChangeEvent<{ name?: string; value: unknown }>) => {
-    const handleSortChange = (e: SelectChangeEvent) => {
+    const handleSortChange = (e: SelectChangeEvent<string>) => {
         if (!onChange) return;
 
         const value = e.target.value;

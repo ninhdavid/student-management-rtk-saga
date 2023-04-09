@@ -10,17 +10,20 @@ export interface StudentFeatureProps {}
 export function StudentFeature(props: StudentFeatureProps) {
     const match = useLocation();
     const dispatch = useDispatch();
-    console.log(match);
-
     useEffect(() => {
         dispatch(cityActions.fetchCityList());
     }, [dispatch]);
 
     return (
         <Routes>
-            <Route path={`${match}`} element={<ListPage />} />
-            <Route path={`${match}/add`} element={<AddEditPage />} />
-            <Route path={`${match}/:studentId`} element={<AddEditPage />} />
+            <Route path="/" element={<ListPage />} />
+            <Route path="/add" element={<AddEditPage />} />
+            <Route path="/:studentId" element={<AddEditPage />} />
         </Routes>
     );
+}
+{
+    /* <Route path="admin/students" element={<ListPage />} />
+                <Route path="admin/students/add" element={<AddEditPage />} />
+                <Route path="admin/students/:studentId" element={<AddEditPage />} /> */
 }

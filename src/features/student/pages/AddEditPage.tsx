@@ -3,7 +3,7 @@ import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import studentApi from 'api/student';
 import { Student } from 'models';
 import React, { useEffect, useState } from 'react';
-import { Link, useNavigate, useParams } from 'react-router-dom';
+import { Link, Outlet, useNavigate, useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import StudentForm from '../components/StudentForm';
 
@@ -12,7 +12,6 @@ export default function AddEditPage() {
     const { studentId } = useParams<{ studentId: string }>();
     const isEdit = Boolean(studentId);
     const [student, setStudent] = useState<Student>();
-
     useEffect(() => {
         if (!studentId) return;
 
@@ -68,6 +67,7 @@ export default function AddEditPage() {
                     <StudentForm initialValues={initialValues} onSubmit={handleStudentFormSubmit} />
                 </Box>
             )}
+            <Outlet />
         </Box>
     );
 }

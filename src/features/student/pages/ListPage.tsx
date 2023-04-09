@@ -14,7 +14,7 @@ import {
     studentActions,
 } from '../studentSlice';
 import { makeStyles } from 'tss-react/mui';
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import studentApi from 'api/student';
 
 const useStyles = makeStyles()((theme) => ({
@@ -43,7 +43,6 @@ export default function ListPage() {
     const { classes } = useStyles();
     const match = useLocation();
     const history = useNavigate();
-
     const studentList = useAppSelector(selectStudentList);
     const pagination = useAppSelector(selectStudentPagination);
     const filter = useAppSelector(selectStudentFilter);
@@ -82,7 +81,7 @@ export default function ListPage() {
         }
     };
     const handleEditStudent = async (student: Student) => {
-        history(`${match}/${student.id}`);
+        history(`${match.pathname}/${student.id}`);
     };
     return (
         <Box className={classes.root}>
@@ -91,7 +90,7 @@ export default function ListPage() {
             <Box className={classes.titleContainer}>
                 <Typography variant="h4">Students</Typography>
 
-                <Link to={`${match}/add`} style={{ textDecoration: 'none' }}>
+                <Link to={`${match.pathname}/add`} style={{ textDecoration: 'none' }}>
                     <Button variant="contained" color="primary">
                         Add new student
                     </Button>
@@ -113,7 +112,6 @@ export default function ListPage() {
                 onEdit={handleEditStudent}
                 onRemove={handleRemoveStudent}
             />
-            <ToastContainer />
             <Box my={2} display="flex" justifyContent="center">
                 <Pagination
                     color="primary"
